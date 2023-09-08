@@ -4,14 +4,13 @@ RSpec.describe "Markets Index page", type: :feature do
   describe "As a visitor, When I visit '/markets'" do
     it "US1a - I see all markets listed with their name, city and state" do
       visit markets_path
-      save_and_open_page
        
-      expect(page).to have_css("#market_list")
-      within "#market_list" do
+      expect(page).to have_css("#markets_list")
+      within "#markets_list" do
         expect(page).to have_content("Name")
         expect(page).to have_content("City")
         expect(page).to have_content("State")
-        expect(page).to have_button("More Info")
+        expect(page).to have_link("More Info")
       end
     end
 
