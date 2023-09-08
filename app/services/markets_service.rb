@@ -43,15 +43,17 @@ class MarketsService
   def vendors_at_market(market_id)
     response = @connection.get("/api/v0/markets/#{market_id}/vendors")
     data = JSON.parse(response.body, symbolize_names: true)
-    vendor_data = data[:data]
+    vendors_data = data[:data]
 
-    vendor = Vendor.new(
-      id: vendor_data[:id],
-        name: vendor_data[:attributes][:name],
-        description: vendor_data[:attributes][:description],
-        contact_name: vendor_data[:attributes][:contact_name],
-        contact_phone: vendor_data[:attributes][:contact_phone],
-        credit_accepted: vendor_data[:attributes][:credit_accepted]
-    )
+    vendors = vendors_data.map do |vendor_data|
+      Vendor.new(
+        id: vendor_data[:id],
+          name: vendor_data[:attributes][:name],
+          description: vendor_data[:attributes][:description],
+          contact_name: vendor_data[:attributes][:contact_name],
+          contact_phone: vendor_data[:attributes][:contact_phone],
+          credit_accepted: vendor_data[:attributes][:credit_accepted]
+      )
+    end
   end
 end

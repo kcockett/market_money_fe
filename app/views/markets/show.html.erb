@@ -5,5 +5,7 @@
 </p>
 <h3>Vendors at at our Market:</h3>
 <p id="vendors_list">
-  
+  <% @vendors.each do |vendor| %>
+    <%= link_to vendor.name, vendor_path(vendor.id) %><br />
+  <% end %>
 </p>
