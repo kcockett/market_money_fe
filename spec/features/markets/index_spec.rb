@@ -14,11 +14,10 @@ RSpec.describe "Markets Index page", type: :feature do
       end
     end
 
-    xit "US1b - When I click a button to see more info on that market, I'm taken to that market's show page '/markets/:id'" do
+    it "US1b - When I click a button to see more info on that market, I'm taken to that market's show page '/markets/:id'" do
       visit markets_path
-      first(:button, "More Info").click
-
-      expect(current_path).to match(%r{/market/.+})
+      first(:link, "More Info").click
+      expect(current_path).to eq("/markets/322458")
     end
   end
 end
