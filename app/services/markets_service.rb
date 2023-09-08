@@ -13,8 +13,10 @@ class MarketsService
       Market.new(
         id: market_data[:id],
         name: market_data[:attributes][:name],
+        address: market_data[:attributes][:street],
         city: market_data[:attributes][:city],
-        state: market_data[:attributes][:state]
+        state: market_data[:attributes][:state],
+        zip: market_data[:attributes][:zip]
       )
     end
     
@@ -28,11 +30,28 @@ class MarketsService
 
     market = Market.new(
       id: market_data[:id],
-      name: market_data[:attributes][:name],
-      city: market_data[:attributes][:city],
-      state: market_data[:attributes][:state]
+        name: market_data[:attributes][:name],
+        address: market_data[:attributes][:street],
+        city: market_data[:attributes][:city],
+        state: market_data[:attributes][:state],
+        zip: market_data[:attributes][:zip]
     )
 
     market
+  end
+
+  def vendors_at_market(market_id)
+    response = @connection.get("/api/v0/markets/#{market_id}/vendors")
+    data = JSON.parse(response.body, symbolize_names: true)
+    vendor_data = data[:data]
+
+    vendor = Vendor.new(
+      id: vendor_data[:id],
+        name: vendor_data[:attributes][:name],
+        description: vendor_data[:attributes][:description],
+        contact_name: vendor_data[:attributes][:contact_name],
+        contact_phone: vendor_data[:attributes][:contact_phone],
+        credit_accepted: vendor_data[:attributes][:credit_accepted]
+    )
   end
 end

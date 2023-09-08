@@ -7,6 +7,7 @@ class MarketsController < ApplicationController
   def show
     markets_service = MarketsService.new
     @market = markets_service.get_one(params[:id])
+    @vendors = markets_service.vendors_at_market(@market.id)
   end
 
 end

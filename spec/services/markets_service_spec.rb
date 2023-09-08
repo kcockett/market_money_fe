@@ -19,8 +19,10 @@ RSpec.describe "Markets Service", type: :service do
       expect(single_market).to be_a(Market)
       expect(single_market.id).to be_a(Integer)
       expect(single_market.name).to be_a(String)
+      expect(single_market.address).to be_a(String)
       expect(single_market.city).to be_a(String)
       expect(single_market.state).to be_a(String)
+      expect(single_market.zip).to be_a(String)
     end
   end
 end
