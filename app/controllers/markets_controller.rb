@@ -1,6 +1,7 @@
 class MarketsController < ApplicationController
   def index
-    @markets = Market.all
+    markets_service = MarketsService.new
+    @markets = markets_service.get_all
   end
 
   def show
