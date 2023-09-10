@@ -26,7 +26,6 @@ gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
-gem "jsonapi-serializer"
 gem "faraday"
 
 # Use Redis adapter to run Action Cable in production
@@ -57,8 +56,6 @@ group :development, :test do
   gem "launchy"
   gem "rspec-rails"
   gem "simplecov"
-  gem "factory_bot_rails"
-  gem "faker"
   gem "pry"
 end
 
